@@ -15,12 +15,6 @@ module Locatable
         self.authenticate_admin= block if block_given?
       end
 
-      mattr_accessor :store
-
-      def self.current_store! &block
-        self.store = block
-      end
-
       mattr_accessor :load_models
       self.load_models = []
 

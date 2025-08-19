@@ -11,9 +11,6 @@ module Locatable
 
           def authenticate!()
             super
-            if @current_user
-              Plugins::Errors::ApiAuthenticationError unless current_user.class.include?(Locatable::Models::Concerns::ActsAsLocatableUser)
-            end
             @current_user
           end
 
@@ -25,10 +22,6 @@ module Locatable
 
           def current_admin
             @current_admin ||= instance_exec(&api_config.authenticate_admin) if api_config.authenticate_admin.is_a?(Proc)
-          end
-
-          def current_store
-            @current_store ||= instance_exec(&api_config.store) if api_config.store.is_a?(Proc)
           end
 
         end

@@ -2,6 +2,7 @@ module Locatable
   class Location < Locatable.config.application_record_base_constant
 
     include Plugins::Models::Concerns::PolymorphicAlternative
+    include ::Plugins::Models::Concerns::ApiResource
 
     self.table_name = "locatable_locations"
 
@@ -24,6 +25,18 @@ module Locatable
       %w[building_name, street, city, province, postcode, country latitude longitude].each do |att|
         self.send("#{att}=", parent.send(att)) if send(att).blank?
       end
+    end
+
+    grape_api_resource 'locatable', default: true do
+      query_scope do |query|
+        query.where(parent_id: nil).order("updated_at desc")
+      end
+      resource_params_attributes do
+        [
+          :locatable_id, :locatable_type, :name, :parent_id, :label, :description, :unit, :building_name, :street, :city, :province, :postcode, :country, :latitude, :longitude
+        ]
+      end
+      presenter "Locatable::Grape::Presenters::Location"
     end
 
   end

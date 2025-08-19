@@ -4,10 +4,14 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 # Specify your gem's dependencies in locatable.gemspec.
 gemspec
 
+gem "puma"
+
 group :development do
   gem 'pg'
   gem 'byebug'
 end
+
+gem 'pagy', '~> 6.5.0'
 
 gem "sprockets-rails"
 

@@ -17,22 +17,11 @@ module Locatable
             if self.class.api_config.authorize.is_a?(Proc)
               instance_exec(*args ,&self.class.api_config.authorize )
             else
-              current_ability.authorize!(*args)
+              #do nothing
             end
           end
 
-          def defined_permissions
-            current_user ? current_user.pos_permissions : nil
-          end
-
-          def current_ability
-            ability_class = if self.class.respond_to?(:ability_class)
-              self.class.ability_class
-            else
-              Locatable.config.grape_api.abilitiy_class_constant
-            end
-            ability_class.new(current_user, self)
-          end
+          def current_ability;end
 
           def skip_authorization!
             skip_authentication! || route_setting(:skip_authorization)

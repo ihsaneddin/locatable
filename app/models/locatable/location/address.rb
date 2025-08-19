@@ -1,14 +1,11 @@
 module Locatable
-  class Address < ::Locatable::Location
+  class Location::Address < ::Locatable::Location
 
-    class Address < ApplicationRecord
+    belongs_to :locatable, polymorphic: true
 
-      belongs_to :locatable, polymorphic: true
-
-      with_options :locatable_valid? do
-        before_validation do
-          self.context ||= self.locatable.locatable_config_default_context
-        end
+    with_options if: :valid_locatable? do
+      before_validation do
+        self.context ||= self.locatable.locatable_config_default_context
       end
     end
 
