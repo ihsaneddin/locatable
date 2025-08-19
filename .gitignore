@@ -16,5 +16,6 @@
 /node_modules
 node_modules
 app/assets/builds
+spec/dummy/.byebug_history
 
 .env
