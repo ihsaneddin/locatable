@@ -8,6 +8,9 @@ module Locatable
     belongs_to :locatable, polymorphic: true
 
     grape_api_resource 'locatable', default: true do
+      query_scope do |query|
+        query.order("updated_at desc")
+      end
       resource_params_attributes do
         [
           :locatable_id, :locatable_type, :location_id, :context, :type

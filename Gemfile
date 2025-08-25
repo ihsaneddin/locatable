@@ -15,7 +15,7 @@ gem 'pagy', '~> 6.5.0'
 
 gem "sprockets-rails"
 
-gem 'plugins', path: '../../plugins'
+gem 'plugins', path: '../plugins'
 
 # Start debugger with binding.b [https://github.com/ruby/debug]
 # gem "debug", ">= 1.0.0"

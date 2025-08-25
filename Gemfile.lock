@@ -1,5 +1,5 @@
 PATH
-  remote: ../../plugins
+  remote: ../plugins
   specs:
     plugins (0.1.0)
       activeentity (>= 6.1.0)
@@ -16,8 +16,9 @@ PATH
     locatable (0.1.0)
       aasm
       alba
+      city-state
       closure_tree
-      friendly_id (~> 5.5.0)
+      friendly_id
       grape
       grape-entity
       grape-kaminari
@@ -105,6 +106,8 @@ GEM
     bigdecimal (3.1.9)
     builder (3.3.0)
     byebug (12.0.0)
+    city-state (1.1.0)
+      rubyzip (>= 2.3)
     closure_tree (7.4.0)
       activerecord (>= 4.2.10)
       with_advisory_lock (>= 4.0.0)
@@ -241,6 +244,7 @@ GEM
     redis-client (0.24.0)
       connection_pool
     ruby2_keywords (0.0.5)
+    rubyzip (3.0.1)
     rufus-scheduler (3.9.2)
       fugit (~> 1.1, >= 1.11.1)
     sidekiq (7.3.9)

@@ -18,11 +18,13 @@ module Locatable
     after_validation :set_full_address
 
     def set_full_address
-      self.full_address = [unit, building_name, street, city, province, postcode, country].compact.join(', ')
+      self.full_address = [unit, building_name, street, city, state, postcode, country].compact.join(', ')
     end
 
     def resolve_attributes
-      %w[building_name, street, city, province, postcode, country latitude longitude].each do |att|
+      self.country ||= Geography.country_name(country_code)
+      self.state ||= Geography.state_name(state_code, country_code)
+      %w[building_name, street, city, state, postcode, country latitude longitude].each do |att|
         self.send("#{att}=", parent.send(att)) if send(att).blank?
       end
     end
@@ -33,7 +35,7 @@ module Locatable
       end
       resource_params_attributes do
         [
-          :locatable_id, :locatable_type, :name, :parent_id, :label, :description, :unit, :building_name, :street, :city, :province, :postcode, :country, :latitude, :longitude
+          :locatable_id, :locatable_type, :name, :parent_id, :label, :description, :unit, :building_name, :street, :city, :state, :postcode, :country, :latitude, :longitude
         ]
       end
       presenter "Locatable::Grape::Presenters::Location"

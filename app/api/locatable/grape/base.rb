@@ -16,6 +16,7 @@ module Locatable
 
       mount ::Locatable::Grape::Locations
       mount ::Locatable::Grape::Locators
+      mount ::Locatable::Grape::Countries
 
 
     end

@@ -32,5 +32,6 @@ Gem::Specification.new do |spec|
   spec.add_dependency "sidekiq"
   spec.add_dependency 'sidekiq-scheduler'
   spec.add_dependency 'closure_tree'
-  spec.add_dependency 'friendly_id', '~> 5.5.0'
+  spec.add_dependency 'friendly_id'
+  spec.add_dependency 'city-state'
 end

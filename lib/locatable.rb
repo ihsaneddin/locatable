@@ -6,6 +6,7 @@ require 'grape'
 require 'grape-entity'
 require 'closure_tree'
 require 'friendly_id'
+require "city-state"
 
 module Locatable
 

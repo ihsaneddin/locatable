@@ -40,7 +40,7 @@ ActiveRecord::Schema[7.0].define(version: 2025_06_26_132458) do
     t.string "building_name"
     t.string "street"
     t.string "city"
-    t.string "province"
+    t.string "state"
     t.string "postcode"
     t.string "country"
     t.decimal "latitude", precision: 10, scale: 6

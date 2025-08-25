@@ -9,6 +9,11 @@ module Locatable
 
           def details
             object.as_json(
+              include: {
+                children: {
+                  methods: [:type]
+                }
+              },
               methods: [:type]
             )
           end
